@@ -7,7 +7,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 //        TokenBucket rateLimiter = new TokenBucket(2, 1000, 2);
-        RateLimit rateLimiter = new SlidingWindow(2, 1000, 2);
+        RateLimit rateLimiter = new LeakyBucket(2, 2, 1000);
 
         for(int i=0; i<15; i++) {
             if(rateLimiter.TryConsume(1)) {
